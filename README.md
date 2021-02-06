@@ -1,32 +1,52 @@
-# create-typescript-library
+# react-get-data-cy
 
-![checks-status](https://img.shields.io/github/checks-status/LukasPolak/create-typescript-library/main?style=flat-square) ![workflow/status](https://img.shields.io/github/workflow/status/lukaspolak/create-typescript-library/CI?style=flat-square) ![codecov](https://img.shields.io/codecov/c/github/lukaspolak/create-typescript-library?style=flat-square) ![npm bundle size](https://img.shields.io/bundlephobia/min/@lukaspolak/create-typescript-library?style=flat-square) ![npm](https://img.shields.io/npm/v/@lukaspolak/create-typescript-library?style=flat-square)
+![checks-status](https://img.shields.io/github/checks-status/LukasPolak/react-get-data-cy/main?style=flat-square) ![workflow/status](https://img.shields.io/github/workflow/status/lukaspolak/react-get-data-cy/CI?style=flat-square) ![codecov](https://img.shields.io/codecov/c/github/lukaspolak/react-get-data-cy?style=flat-square) ![npm bundle size](https://img.shields.io/bundlephobia/min/@lukaspolak/react-get-data-cy?style=flat-square) ![npm](https://img.shields.io/npm/v/@lukaspolak/react-get-data-cy?style=flat-square)
 
-> A short description about what your library is.
+Helper function provides a `data-cy` testing attribute with a value that can match the text content of the react element.
 
 ## Motivation
 
-> Elaborate on the reason behind this library: why may people need it? What issues does it solve? How is it different from the similar libraries?
+I wanted to have a dynamic `data-cy` testing attribute that can be based on children passed to react element. This package supports `string`, `JSX.Element` and `ReactNode` as `value` i.e. second argument.
 
 ## Getting started
 
-> Go through the steps necessary to install, configure, and use your library.
+To use this package, you only need to install this dependency, import it and invoke the `getDataCy` function, e.g.:
+
+```tsx
+import { getDataCy } from '@lukaspolak/react-getDataCy'
+
+export const FancyComponent: FC = ({ children }) => {
+  return <div {...getDataCy('fancy component', children)}>{children}</div>
+}
+```
 
 ### Install
 
 ```bash
-npm install @lukaspolak/create-typescript-library
+npm install @lukaspolak/react-get-data-cy
 ```
 
 or
 
 ```bash
-yarn add @lukaspolak/create-typescript-library
+yarn add @lukaspolak/react-get-data-cy
 ```
 
 ## Documentation
 
-> Reference the documentation website, or write the documentation straight in this README file.
+This package works well with [babel-plugin-react-remove-properties](https://www.npmjs.com/package/babel-plugin-react-remove-properties). To configure it, update `.babelrc` file.
+
+```jsonc
+{
+  //...
+  "env": {
+    "production": {
+      "plugins": [["react-remove-properties", { "properties": ["data-cy"] }]]
+    }
+  }
+  //...
+}
+```
 
 ## Contributing
 
@@ -38,26 +58,5 @@ There are a lot of similar libraries/packages on [GitHub](https://github.com/fea
 
 ## INITIALIZATION TODO
 
-- [ ] replace `create-typescript-library` with repository name
-- [ ] update `keywords` in `package.json` file
 - [ ] remove `INITIALIZATION TODO` section
-- [ ] update `buildEsm.input` array with correct paths
 - [ ] replace quoted text in `README.md` file
-
-For [React](https://reactjs.org/) based library install (`yarn add @types/react react -D`) dev dependencies. Script for linting should be changed to: `"lint": "eslint './{src,test}/**/*.{ts,tsx}'",`
-
-Also update `tsconfig.json` file with:
-
-```jsonc
-{
-  // ...
-  "compilerOptions": {
-    // ...
-    "allowSyntheticDefaultImports": true, // replace original
-    "jsx": "react", // add
-    "esModuleInterop": true // add
-    // ...
-  }
-  // ...
-}
-```
