@@ -17,6 +17,6 @@
     "jsx": "react",
     "esModuleInterop": true
   },
-  "include": ["src/**/*.{ts,tsx}"],
+  "include": ["src/**/*.ts"],
   "exclude": ["node_modules"]
 }
