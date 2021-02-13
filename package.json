@@ -1,7 +1,7 @@
 {
   "name": "@lukaspolak/react-get-data-cy",
   "version": "0.0.1",
-  "description": "A repository template for a TypeScript library.",
+  "description": "Helper function provides a `data-cy` testing attribute with a value that can match the text content of the react element.",
   "keywords": [
     "cypress",
     "cy",
