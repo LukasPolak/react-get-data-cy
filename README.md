@@ -4,6 +4,10 @@
 
 Helper function provides a `data-cy` testing attribute with a value that can match the text content of the react element.
 
+## Demo
+
+[CodeSandbox](https://codesandbox.io/s/react-get-data-cy-6q2jp?file=/src/Button.tsx)
+
 ## Motivation
 
 I wanted to have a dynamic `data-cy` testing attribute that can be based on children passed to react element. This package supports `string`, `JSX.Element` and `ReactNode` as `value` i.e. second argument.
